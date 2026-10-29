@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">NativeRuntimeContracts App</string>
+    <string name="app_name">NativeRuntime Contracts Demo</string>
+    <string name="title_test_bench">NativeRuntimeContracts টেস্টবেঞ্চ</string>
+    <string name="btn_init">ইনিশিয়ালাইজ করুন (Initialize)</string>
+    <string name="btn_suspend">সাসপেন্ড করুন (Suspend)</string>
+    <string name="btn_resume">রিজিউম করুন (Resume)</string>
+    <string name="btn_rpc">RPC রিকোয়েস্ট পরীক্ষা (Test RPC)</string>
+    <string name="btn_analytics">ইভেন্ট ও মেট্রিক লগ (Analytics)</string>
+    <string name="btn_dto">ডিভাইস ও ব্যাটারি DTO (DTO Telemetry)</string>
+    <string name="btn_release">রিলিজ ও রিসেট (Release)</string>
 </resources>
+

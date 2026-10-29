@@ -4,4 +4,5 @@ before_install:
   - git config --global --add safe.directory '*' || true
   - chmod +x gradlew
 install:
-  - ./gradlew clean :native-runtime-contracts:assembleRelease :native-runtime-contracts:publishToMavenLocal :app:assembleRelease --stacktrace || ./gradlew clean :native-runtime-contracts:assembleRelease :native-runtime-contracts:publishToMavenLocal --stacktrace
+  - ./gradlew clean :native-runtime-contracts:assembleRelease :native-runtime-contracts:publishToMavenLocal --stacktrace
+
