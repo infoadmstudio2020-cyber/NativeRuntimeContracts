@@ -1,3 +1,4 @@
+
 name: Release
 
 on:
@@ -5,9 +6,15 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -38,20 +45,45 @@ jobs:
 
       - name: Build Release AAR
         run: |
-          ./gradlew clean :native-runtime-contracts:assembleRelease --stacktrace || {
-            echo "Module task :native-runtime-contracts:assembleRelease failed or not found. Checking available tasks..."
-            if ./gradlew tasks --all 2>/dev/null | grep -E "\bassembleRelease\b"; then
-              ./gradlew clean assembleRelease --stacktrace
-            else
-              ./gradlew clean build --stacktrace
-            fi
-          }
+          set -e
 
-      - name: Create Release
+          if ./gradlew :native-runtime-contracts:assembleRelease --stacktrace; then
+            echo "Native Runtime Contracts AAR build completed."
+          else
+            echo "Module-specific build failed. Checking available release tasks..."
+            if ./gradlew tasks --all 2>/dev/null | grep -qE '(^|[[:space:]])assembleRelease([[:space:]]|$)'; then
+              ./gradlew assembleRelease --stacktrace
+            else
+              ./gradlew build --stacktrace
+            fi
+          fi
+
+      - name: Verify AAR artifacts
+        id: verify-aar
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p release-artifacts
+          find . -type f -path '*/build/outputs/aar/*.aar' \
+            -not -path './release-artifacts/*' \
+            -exec cp -f {} release-artifacts/ \;
+
+          if ! compgen -G 'release-artifacts/*.aar' > /dev/null; then
+            echo "::error::No AAR artifacts found. Release cannot continue."
+            exit 1
+          fi
+
+          echo "AAR artifacts ready for release:"
+          ls -lh release-artifacts/
+
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          files: |
-            native-runtime-contracts/build/outputs/aar/*.aar
-            **/build/outputs/aar/*.aar
+          tag_name: ${{ github.ref_name }}
+          files: release-artifacts/*.aar
+          generate_release_notes: true
+          fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
