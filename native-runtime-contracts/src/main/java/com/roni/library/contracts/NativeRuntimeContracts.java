@@ -41,7 +41,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * </pre>
  *
  * @author  infoadmstudio2020-cyber
- * @version 1.0.1
+ * @version 1.0.2
  */
 public final class NativeRuntimeContracts {
 

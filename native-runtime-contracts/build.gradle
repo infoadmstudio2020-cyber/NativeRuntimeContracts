@@ -11,7 +11,7 @@ android {
         minSdk 21
         targetSdk 34
         versionCode 1
-        versionName "1.0.1"
+        versionName "1.0.2"
         consumerProguardFiles "consumer-rules.pro"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -57,7 +57,7 @@ afterEvaluate {
                 from components.findByName('release') ?: components.findByName('java') ?: components.findByName('default')
                 groupId    = 'com.github.infoadmstudio2020-cyber'
                 artifactId = 'NativeRuntimeContracts'
-                version    = '1.0.1'
+                version    = '1.0.2'
 
                 pom {
                     name        = 'NativeRuntimeContracts'

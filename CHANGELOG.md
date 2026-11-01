@@ -3,7 +3,7 @@
 All notable changes to NativeRuntimeContracts are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com).
 
-## [1.0.1] — 2026-10-29
+## [1.0.2] — 2026-10-29
 
 ### Added
 - **Layer 0 Universal Foundation Contracts**: Implemented all 23 key domain interfaces and DTOs:

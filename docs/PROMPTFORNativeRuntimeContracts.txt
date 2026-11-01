@@ -10,7 +10,7 @@ Transform the generated Android Studio scaffold project for **NativeRuntimeContr
 - **Companion Demo App**: `app` (includeDemoApp = true)
 - **Maven Group ID**: `com.github.native-runtime`
 - **Artifact ID**: `native-runtime-contracts`
-- **Semantic Version**: `1.0.1`
+- **Semantic Version**: `1.0.2`
 - **Root Java Package**: `com.roni.library.contracts`
 - **Primary Public Entry Point**: `NativeRuntimeContracts`
 - **Architecture Classification**: `Layer 0: Universal Foundation Contracts` (`L0`)
@@ -60,7 +60,7 @@ Transform the generated Android Studio scaffold project for **NativeRuntimeContr
 ### Step 1: Audit and Wire Layer Dependencies
 - Open `library/build.gradle` and verify dependencies.
 - Ensure `com.android.library` and `maven-publish` are active.
-- Verify MavenPublication coordinates: `groupId: com.github.native-runtime`, `artifactId: native-runtime-contracts`, `version: 1.0.1`.
+- Verify MavenPublication coordinates: `groupId: com.github.native-runtime`, `artifactId: native-runtime-contracts`, `version: 1.0.2`.
 
 ### Step 2: Implement Core Engine & Internal Models
 - Replace placeholder stub methods in `NativeRuntimeContracts.java` with actual state machine logic, thread pool executors, and error handling guards.

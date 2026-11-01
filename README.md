@@ -51,7 +51,7 @@ dependencyResolutionManagement {
 In your module's `build.gradle`:
 ```gradle
 dependencies {
-    implementation 'com.github.infoadmstudio2020-cyber:NativeRuntimeContracts:1.0.1'
+    implementation 'com.github.infoadmstudio2020-cyber:NativeRuntimeContracts:1.0.2'
 }
 ```
 

@@ -6,6 +6,8 @@ package com.roni.library.contracts.common;
  * State flow:
  * UNINITIALIZED -> INITIALIZING -> READY -> SUSPENDED -> TERMINATED
  *
+ * ERROR represents an initialization or runtime failure.
+ *
  * @author infoadmstudio2020-cyber
  */
 public enum RuntimeState {
@@ -22,11 +24,14 @@ public enum RuntimeState {
     /** Temporarily paused or backgrounded. */
     SUSPENDED,
 
+    /** Initialization or runtime failure occurred. */
+    ERROR,
+
     /** Completely stopped, cleaned up and disposed. */
     TERMINATED;
 
     /**
-     * Check if the current state is final (cannot transition further).
+     * Check if the current state is final.
      *
      * @return true if TERMINATED
      */
@@ -41,5 +46,14 @@ public enum RuntimeState {
      */
     public boolean isOperational() {
         return this == READY;
+    }
+
+    /**
+     * Check if the runtime encountered an error.
+     *
+     * @return true if ERROR
+     */
+    public boolean isError() {
+        return this == ERROR;
     }
 }
